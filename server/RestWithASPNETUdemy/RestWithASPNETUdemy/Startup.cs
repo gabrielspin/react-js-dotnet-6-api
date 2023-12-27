@@ -75,6 +75,14 @@ namespace RestWithASPNETUdemy
                 };
             });
 
+            //services.AddHttpsRedirection(options =>
+            //{
+            //      options.HttpsPort = 443; // Porta padrão HTTPS
+            //});
+
+            services.AddMvc();
+
+
             services.AddAuthorization(auth =>
             {
                 auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
@@ -117,7 +125,8 @@ namespace RestWithASPNETUdemy
             //Versioning API
             services.AddApiVersioning();
 
-            services.AddSwaggerGen(c => {
+            services.AddSwaggerGen(c =>
+            {
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
@@ -166,7 +175,8 @@ namespace RestWithASPNETUdemy
 
             app.UseSwagger();
 
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json",
                     "REST API's From 0 to Azure with ASP.NET Core 5 and Docker - v1");
             });
